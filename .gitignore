@@ -1,0 +1,28 @@
+# ===== ビルド/キャッシュ =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# ===== 仮想環境 / ローカルPythonランタイム =====
+.venv/
+venv/
+env/
+# Pythonインストールマネージャがプロジェクト内に置いたランタイム本体（コミットしない）
+Python/
+
+# ===== テスト/カバレッジ =====
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.ruff_cache/
+
+# ===== IDE/OS =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

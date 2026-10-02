@@ -1,0 +1,47 @@
+[project]
+name = "cart-demo"
+version = "0.1.0"
+description = "技術発表会デモ: Copilotによる自動テスト作成 + GitHub PR CI"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# ---- pytest ----
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -v"
+pythonpath = ["src"]
+
+# ---- ruff (Lint) ----
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+# 仮想環境やローカルPythonランタイムは走査対象外にする（Gitリポジトリ外でも確実に除外）
+extend-exclude = [".venv", "venv", "env", "build", "dist", "Python"]
+
+[tool.ruff.lint]
+# E/F: pyflakes+pycodestyle, I: import整列, UP: 新しい書き方, B: バグ検出
+select = ["E", "F", "I", "UP", "B"]
+
+# ---- coverage ----
+[tool.coverage.run]
+source = ["cart"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
